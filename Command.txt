@@ -1,0 +1,16 @@
+1.Instal Virtualenv = pip install virtualenv
+2.Virtual env dekhar way = python -m virtualenv --version
+3.virtual env create = python -m virtualenv room1
+4.Activate = room1\Scripts\Activate.ps1
+
+
+5.Mysql Connect with python = pip install mysql-connector-python
+6.ki ki jinish install ase = pip list
+7.Shundor form = pip install crispy-bootstrap5
+
+
+---------------Django Project 1st project---------------
+1.django-admin startproject project_name
+2.cd first_project
+3.python manage.py runserver
+4.django-admin startapp app_name

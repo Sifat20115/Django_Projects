@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+<link rel = "stylesheet" href = "{% static 'css/style2.css' %}"/>
+</head>
+<body>
+
+<h1>First app Heading</h1>
+<p>My first paragraph.{{arr}}</p>
+<img src="{% static 'images/imagee.png' %}" alt = "Nature Image">
+
+{% for i in arr %}
+<h1>{{i}}</h1>
+{% endfor %}
+
+</body>
+</html>

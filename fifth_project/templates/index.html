@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>HOME</title>
+<link rel = "stylesheet" href = "{% static 'css/style.css' %}">
+
+</head>
+<body>
+<h1>HOME PAGE</h1>
+<img src="{% static 'images/image1.jpg' %}" alt = "choobi">
+
+{% for i in student %}
+<h1>{{i.name}}</h1>
+<h1>{{i.id}}</h1>
+{% endfor %}
+
+</body>
+</html>
