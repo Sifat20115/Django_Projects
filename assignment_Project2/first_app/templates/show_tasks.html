@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+    <div style="width:70%; margin:auto">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Number</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in task %}
+                    {% if i.status == False %}
+                        <tr>
+                            <td>{{i.id}}</td>
+                            <td>{{i.title}}</td>
+                            <td>{{i.description}}</td>
+                            <td>Incomplete</td>
+                            <td>
+                                <a class = 'btn btn-danger' href='{%url 'delete' id=i.id%}'>Delete</a>
+                                <a class = 'btn btn-warning' href='{%url 'edit' id=i.id%}'>Edit</a>
+                                <a class = 'btn btn-success' href='{%url 'complete' id=i.id%}'>Complete</a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

@@ -14,3 +14,21 @@
 2.cd first_project
 3.python manage.py runserver
 4.django-admin startapp app_name
+
+
+---------------Crispy add---------------
+1.settings.py->
+INSTALLED_APPS=[
+	'crispy_forms',
+	'crispy_bootstrap5',
+]
+CRISPY_ALLOWED_TEMPLATE_PACKS='bootstrap5'
+CRISPY_TEMPLATE_PACK='bootstrap5'
+
+2.template er moddhe = {% load crispy_forms_tags %}
+
+
+---------------Django Database---------------
+1.Ekta class code ke SQL a convert kore = python manage.py makemigrations
+2.Eta uporer sql command ke table a convert kore = python manage.py migrate
+3.Create Superuser = python manage.py createsuperuser

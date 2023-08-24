@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block content %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Book_Name</th>
+        <th scope="col">Author_Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">First_Publication</th>
+        <th scope="col">Last_Publication</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for i in book %}
+      <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.book_name}}</td>
+        <td><a href='#'>{{i.author}}</a></td>
+        <td>{{i.category}}</td>
+        <td>{{i.first_pub}}</td>
+        <td>{{i.last_pub}}</td>
+        <td><a class = 'btn btn-danger'href='{%url 'delete' id=i.id%}'>Delete</a>
+        <a class = 'btn btn-warning'href='{%url 'edit' id=i.id%}'>Edit</a></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+{% endblock content %}
