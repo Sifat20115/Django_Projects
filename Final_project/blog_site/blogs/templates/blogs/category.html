@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<a href = "{% url 'create' %}">Hello {{user.username}}! Post Your Blog <i class="fa fa-edit"></i></a><br>
+
+
+
+<ul class="tm-mb-75 pl-5 tm-category-list">
+    {% for category in categories %}
+    <li><a href="{% url 'specific' category.id %}" class="tm-color-primary">{{category.category_name}}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

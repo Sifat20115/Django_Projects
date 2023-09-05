@@ -2,6 +2,8 @@
 2.Virtual env dekhar way = python -m virtualenv --version
 3.virtual env create = python -m virtualenv room1
 4.Activate = room1\Scripts\Activate.ps1
+5.Rest framework er jonno = pip install djangorestframework
+6. Server add korar jonno = pip install django-cors-headers
 
 
 5.Mysql Connect with python = pip install mysql-connector-python
@@ -32,3 +34,19 @@ CRISPY_TEMPLATE_PACK='bootstrap5'
 1.Ekta class code ke SQL a convert kore = python manage.py makemigrations
 2.Eta uporer sql command ke table a convert kore = python manage.py migrate
 3.Create Superuser = python manage.py createsuperuser
+
+
+
+
+def search(request):
+    if 'keyword' in request.GET:
+        keyword = request.GET['keyword']
+        if keyword:
+            hotels = Hotel.objects.order_by('-created_date').filter(Q(address__icontains=keyword) | Q(hotel_name__icontains=keyword))
+            hotel_count = hotels.count()
+    context = {
+        'hotels' : hotels,
+        'h_count': hotel_count
+    }
+    
+    return render(request, 'hotel/hotel.html', context)
