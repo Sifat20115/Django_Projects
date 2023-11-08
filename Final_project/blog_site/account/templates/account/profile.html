@@ -6,6 +6,8 @@
             <a href = "{% url 'create' %}">Hello {{user.username}}! Post Your Blog <i class="fa fa-edit"></i></a>
             <br><br>
             <a class = 'btn btn-info' href="{% url 'myFav' %}"><i class="fa fa-heart"></i>My Favorites</a>
+            <br>
+            <a href = "{% url 'profile' %}">Hello {{user.username}}! Your Blogs Here ...</a>
         {% endif %}
         <div class="row tm-row">
             {% for blog in blogs %}

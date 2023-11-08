@@ -17,8 +17,10 @@ class MyTemplateView(TemplateView):
     template_name = 'home.html'
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context = {'name' : 'rahim', 'age' : 21}
+        print(context)
         print(kwargs)
+        context = {'name' : 'rahim', 'age' : 21}
+        print(context)
         context.update(kwargs) #dictionary update kora
         print(context)
         return context
@@ -68,7 +70,7 @@ class BookListView(ListView):
     model = BookStoreModel
     template_name = 'show_books.html'
     context_object_name = 'booklist'
-    # def get_queryset(self):
+    #def get_queryset(self):
     #     return BookStoreModel.objects.filter(id='3')
     # def get_context_data(self, **kwargs):
     #     context = super().get_context_data(**kwargs)
@@ -92,7 +94,7 @@ class BookDetailsView(DetailView):
     model = BookStoreModel
     template_name = 'book_details.html'
     context_object_name = 'item'
-    pk_url_kwarg = 'id'#primary key accept korar jonno 
+    pk_url_kwarg = 'pk'#primary key accept korar jonno 
 
 #function base update view:
 '''

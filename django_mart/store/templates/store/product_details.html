@@ -67,10 +67,17 @@
               {% else %}
               <form method = 'POST'>
                 {% csrf_token %}
+                {% if user.id %}
                 <a href = "{% url 'addcart' single_product.id %}" class="btn btn-primary">
                   <span class="text">Add to Cart</span>
                   <i class="fas fa-shopping-cart"></i>
                 </a>
+                {% else %}
+                <a href = "{% url 'login' %}" class="btn btn-primary">
+                  <span class="text">Add to Cart</span>
+                  <i class="fas fa-shopping-cart"></i>
+                </a>
+                {% endif %}
               </form>
               {% endif %}
             </article>

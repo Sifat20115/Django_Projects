@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Book Store Management</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  </head>
+
+  <body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      $(document).ready(function () {
+        const apiUrl = "http://127.0.0.1:8000/api2/";
+
+        function fetchBooks() {
+          $.get(apiUrl, function (data) {
+            $("#book-list").empty();
+            data.forEach(function (book) {
+              $("#book-list").append(`
+                            <tr>
+                              <td>
+                                ${book.name}
+                              </td> 
+                            </tr>
+                        `);
+            });
+
+            $(".update-button").click(function () {
+              const bookId = $(this).data("id");
+              console.log(bookId)
+              const newTitle = prompt("Enter new title:");
+              const newAuthor = prompt("Enter new author:");
+              const newCategory = prompt("Enter new category:");
+              if (newTitle && newAuthor && newCategory) {
+                const updateUrl = apiUrl + bookId + "/";
+                $.ajax({
+                  url: updateUrl,
+                  type: "PUT",
+                  data: {
+                    id : bookId,
+                    book_name: newTitle,
+                    author: newAuthor,
+                    category: newCategory,
+                  },
+                  success: function () {
+                    fetchBooks();
+                  },
+                });
+              }
+            });
+
+            $(".delete-button").click(function () {
+              const bookId = $(this).data("id");
+              const deleteUrl = apiUrl + bookId + "/";
+              $.ajax({
+                url: deleteUrl,
+                type: "DELETE",
+                success: function () {
+                  fetchBooks();
+                },
+              });
+            });
+          });
+        }
+
+        fetchBooks();
+
+        $("#add-book-form").submit(function (e) {
+          e.preventDefault();
+
+          const id = $("#id").val();
+          const title = $("#title").val();
+          const author = $("#author").val();
+          const category = $("#category").val();
+
+          $.post(
+            apiUrl,
+            {
+              id: id,
+              book_name: title,
+              author: author,
+              category: category,
+            },
+            function (data) {
+              $("#title").val("");
+              $("#author").val("");
+              $("#category").val("");
+              fetchBooks();
+            }
+          );
+        });
+      });
+    </script>
+  </body>
+</html>

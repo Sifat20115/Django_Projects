@@ -26,6 +26,7 @@ INSTALLED_APPS=[
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS='bootstrap5'
 CRISPY_TEMPLATE_PACK='bootstrap5'
+HTML = {% load crispy_forms_tags %}
 
 2.template er moddhe = {% load crispy_forms_tags %}
 

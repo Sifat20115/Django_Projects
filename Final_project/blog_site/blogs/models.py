@@ -5,8 +5,8 @@ from django.contrib.auth.models import User
 class blogs(models.Model):
     blog_title      = models.CharField(max_length=200, unique=True)
     slug            = models.SlugField(max_length=200, unique=True)
-    images          = models.ImageField(upload_to='photos/chobi',blank=True)
-    description     = models.TextField(max_length=5000, blank=True)
+    images          = models.ImageField(upload_to='photos/chobi',blank=False)
+    description     = models.TextField(max_length=5000, blank=False)
     category        = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_date    = models.DateTimeField(auto_now_add=True)
     modified_date   = models.DateTimeField(auto_now=True)

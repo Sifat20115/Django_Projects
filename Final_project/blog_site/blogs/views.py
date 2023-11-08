@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import blogsform
 from .models import blogs,favorites,ratings
 from category.models import Category
+from django.views.generic import TemplateView,ListView,DetailView
 @login_required
 def create(request):
     if request.method == 'POST':

@@ -11,6 +11,12 @@ def signin(request):
             print('Valid')
             form.save()
             return redirect('login')
+        '''
+        user = form.save(commit=False)
+        if user.email == 'sifat.sbs@gmail.com':
+        user.is_staff = True  # Set is_staff to True to make the user a staff member
+        user.save()
+        '''
     else:
         form = RegistrationForm()
     return render(request,"account/register.html",{'form':form})
